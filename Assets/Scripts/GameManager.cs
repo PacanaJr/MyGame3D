@@ -20,12 +20,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (puntos >= 6)
+        if (GameObject.FindGameObjectsWithTag("Cubo").Length == 0)
         {
-            Debug.Log("Todos los puntos");
-            SceneManager.LoadScene(3);
+            int actual = SceneManager.GetActiveScene().buildIndex;
+            int siguiente = actual + 1;
+            if (siguiente < SceneManager.sceneCountInBuildSettings)
+                SceneManager.LoadScene(siguiente);
         }
     }
+
+
     public void SumarPuntos()
     {
         puntos++;
